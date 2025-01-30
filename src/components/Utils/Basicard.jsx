@@ -3,10 +3,13 @@ import '../../assets/css/custom.css';
 
 const Basicard = ({title}) => {
 
-    console.log(title);
+    const sidebarStyle = {
+        backgroundColor: '#af1115',
+         color: '#ffffff'//,  //Example color override
+       };
     return (
-        <section className="card mb-4">
-        <div className="card-body title">
+        <section className="card">
+        <div className="card-body title" style={sidebarStyle}>
             <h3>{title}</h3>
         </div>
     </section>
