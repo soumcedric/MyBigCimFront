@@ -101,7 +101,7 @@ var Sidebar = () => {
         </a>
       </li>
       <li>
-        <a href="/Employes">
+        <a href="/employes">
           <Icon icon="bi:chat-dots" className="menu-icon" />
           <span>Liste des employés</span> 
         </a>
