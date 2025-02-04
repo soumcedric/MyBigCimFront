@@ -1,0 +1,84 @@
+import React, { PureComponent } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import AuthenticationLayout from '../layouts/AuthenticationLayout';
+import SignIn from '../components/authentication/SignIn';
+import MainLayout from '../layouts/MainLayout';
+import Services from '../components/configuration/Services';
+import Fonction from '../components/configuration/Fonction';
+const isAuthenticated = true;
+
+var AppRoutes = () => {
+
+    return (
+
+        <Routes>
+            <Route path="/"
+                element={
+                    <AuthenticationLayout>
+                        <SignIn></SignIn>
+                    </AuthenticationLayout>
+                }
+            />
+
+
+
+
+            {isAuthenticated ? (
+                <>
+                    <Route path="/services"
+                        element={
+                            <MainLayout>
+                                <Services />
+                            </MainLayout>
+                        }
+                    />
+                     <Route path="/fonction"
+                        element={
+                            <MainLayout>
+                                <Fonction />
+                            </MainLayout>
+                        }
+                    />
+                </>
+            ) : (
+                <Route path="/"
+                    element={
+                        <AuthenticationLayout>
+                            <SignIn />
+                        </AuthenticationLayout>
+                    }
+                />
+            )
+
+            };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </Routes>
+
+
+
+
+
+    )
+}
+
+export default AppRoutes;

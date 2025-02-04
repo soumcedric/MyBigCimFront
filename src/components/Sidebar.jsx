@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react'
 import { Link} from 'react-router-dom'
 import { Icon, InlineIcon } from '@iconify/react';
-
-
-
+//import '../assets/new/js/custom.js';
+import '../assets/new/js/app.js';
 
 
 var Sidebar = () => {
@@ -25,15 +24,15 @@ var Sidebar = () => {
   </button>
   <div>
     <a href="index.html" className="sidebar-logo">
-      <img src="./src/assets/new//images/logo.png" alt="site logo" className="light-logo" />
-      <img src="./src/assets/new/images/logo-light.png" alt="site logo" className="dark-logo" />
-      <img src="./src/assets/new/images/logo-icon.png" alt="site logo" className="logo-icon" />
+      <img src="./src/assets/new//images/logo.png"  className="light-logo" />
+      <img src="./src/assets/new/images/logo-light.png"  className="dark-logo" />
+      <img src="./src/assets/new/images/logo-icon.png"  className="logo-icon" />
     </a>
   </div>
   <div className="sidebar-menu-area">
     <ul className="sidebar-menu" id="sidebar-menu">
-      <li className="dropdown open">
-        <a href="javascript:void(0)">
+      <li className="dropdown" id='dash'>
+        <a href="#">
           <Icon icon="solar:home-smile-angle-outline" className="menu-icon" />
           <span>Dashboard</span>
         </a>
@@ -63,9 +62,9 @@ var Sidebar = () => {
         </a>
       </li>
       <li>
-        <a href="chat-message.html">
+        <a href="/services">
           <Icon icon="bi:chat-dots" className="menu-icon" />
-          <span>Chat</span> 
+          <span>Service</span> 
         </a>
       </li>
       <li>
@@ -75,7 +74,7 @@ var Sidebar = () => {
         </a>
       </li>
       <li className="dropdown">
-        <a href="javascript:void(0)">
+        <a href="#">
           <Icon icon="hugeicons:invoice-03" className="menu-icon" />
           <span>Invoice</span> 
         </a>
@@ -94,9 +93,29 @@ var Sidebar = () => {
           </li>
         </ul>
       </li>
+      <li className="sidebar-menu-group-title">Employés</li>
+      <li>
+        <a href="/CreerEmploye">  
+          <Icon icon="mage:email" className="menu-icon" />
+          <span>Créer employé</span>
+        </a>
+      </li>
+      <li>
+        <a href="/Employes">
+          <Icon icon="bi:chat-dots" className="menu-icon" />
+          <span>Liste des employés</span> 
+        </a>
+      </li>
+      <li>
+        <a href="calendar-main.html">
+          <Icon icon="solar:calendar-outline" className="menu-icon" />
+          <span>Rechercher employé</span> 
+        </a>
+      </li>
+     
       <li className="sidebar-menu-group-title">Application</li> 
       <li className="dropdown">
-        <a href="javascript:void(0)">
+        <a href="#">
           <Icon icon="solar:document-text-outline" className="menu-icon" />
           <span>Components</span> 
         </a>
@@ -167,7 +186,7 @@ var Sidebar = () => {
         </ul>
       </li>
       <li className="dropdown">
-        <a href="javascript:void(0)">
+        <a href="#">
           <Icon icon="heroicons:document" className="menu-icon" />
           <span>Forms</span> 
         </a>
@@ -184,7 +203,7 @@ var Sidebar = () => {
         </ul>
       </li>
       <li className="dropdown">
-        <a href="javascript:void(0)">
+        <a href="#">
           <Icon icon="mingcute:storage-line" className="menu-icon" />
           <span>Table</span> 
         </a>
@@ -198,7 +217,7 @@ var Sidebar = () => {
         </ul>
       </li>
       <li className="dropdown">
-        <a href="javascript:void(0)">
+        <a href="#">
           <Icon icon="solar:pie-chart-outline" className="menu-icon" />
           <span>Chart</span> 
         </a>
@@ -221,7 +240,7 @@ var Sidebar = () => {
         </a>
       </li>
       <li className="dropdown">
-        <a href="javascript:void(0)">
+        <a href="#">
           <Icon icon="flowbite:users-group-outline" className="menu-icon" />
           <span>Users</span> 
         </a>
@@ -242,7 +261,7 @@ var Sidebar = () => {
       </li>
       <li className="sidebar-menu-group-title">Application</li>
       <li className="dropdown">
-        <a href="javascript:void(0)">
+        <a href="#">
           <Icon icon="simple-line-icons:vector" className="menu-icon" />
           <span>Authentication</span> 
         </a>
@@ -289,7 +308,7 @@ var Sidebar = () => {
         </a>
       </li>
       <li className="dropdown">
-        <a href="javascript:void(0)">
+        <a href="#">
           <Icon icon="icon-park-outline:setting-two" className="menu-icon" />
           <span>Settings</span> 
         </a>

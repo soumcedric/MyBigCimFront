@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Basicard from '../Utils/Basicard';
 import axios from 'axios';
 import DataTable from 'react-data-table-component';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 var Fonction = () => {
 
@@ -27,13 +28,31 @@ var Fonction = () => {
 		{
 			name: 'Actions',
 			selector: 'actions',
-			selector: row => row.action
+			cell: row => (
+				<div>
+					{/* <a href="javascript:void(0)" className="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
+						<Icon icon="iconamoon:eye-light" />
+					</a> */}
+					<a href="javascript:void(0)" 
+						className="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center"
+						onClick={(e) => {handleUpdateClick(row.id)}}>
+						<Icon icon="lucide:edit" />
+					</a>
+					<a href="javascript:void(0)" 
+						className="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center"
+						onClick={(e) => {handleDeleteClick(e,row.id)}} >
+						<Icon icon="mingcute:delete-2-line" />
+					</a>
+				</div>
+
+
+			)
 		},
 	];
 
 
 	const datas = [
-		{ id: 1, code: 'Fonc1', libelle: 'Fonction 1' },,
+		{ id: 1, code: 'Fonc1', libelle: 'Fonction 1' }, ,
 	];
 
 	const [data, setData] = useState([])
@@ -44,7 +63,7 @@ var Fonction = () => {
 			.then(response => {
 				console.log(response.data);
 				setData(response.data);
-				
+
 			})
 			.catch(error => {
 
@@ -57,6 +76,12 @@ var Fonction = () => {
 	}
 
 	const [newData, setNewData] = useState(intialState);
+
+	const intialDelete = {
+		Id: '',
+	}
+
+	const [dataDelete, setNewdataDelete] = useState(intialDelete);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -71,98 +96,114 @@ var Fonction = () => {
 		// 		console.log
 	}
 
-	return (
+	const handleDeleteClick = (e, id) => {
+		debugger
 		
+		e.preventDefault();
+		console.log("Row Id", id);
+
+		const url = "api/Fonction/"+id;
+	
+		setNewdataDelete(id);
+		console.log(dataDelete);
+		axios.delete(url)
+			 .then(response =>{
+				console.log(response.data);
+			 });
+	};
+
+	return (
 
 
-			<div>
 
-				<div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-					<h6 className="fw-semibold mb-0">Form Validation</h6>
-					<ul className="d-flex align-items-center gap-2">
-						<li className="fw-medium">
-							<a href="index.html" className="d-flex align-items-center gap-1 hover-text-primary">
-								<iconify-icon icon="solar:home-smile-angle-outline" className="icon text-lg" />
-								Dashboard
-							</a>
-						</li>
-						<li>-</li>
-						<li className="fw-medium">Form Validation</li>
-					</ul>
-				</div>
+		<div>
 
-				<div className="col-lg-12">
-					<div className="card">
-						<div className="card-header">
-							<h5 className="card-title mb-0">Création des fonctions</h5>
-						</div>
-						<div className="card-body">
-							<form className="row gy-3 needs-validation" noValidate>
-								<div className="col-md-6">
-									<label className="form-label">Code</label>
-									<input type="text" name="#0" className="form-control" defaultValue="info@gmail.com" required onChange={e => setNewData({ ...newData, code: e.target.value })} />
-									<div className="valid-feedback">
-										Looks good!
-									</div>
-								</div>
-								<div className="col-md-6">
-									<label className="form-label">Libelle</label>
-									<input type="text" name="#0" className="form-control" defaultValue="info@gmail.com" required onChange={e => setNewData({ ...newData, libelle: e.target.value })} />
-									<div className="valid-feedback">
-										Looks good!
-									</div>
-								</div>
-
-								<div className="col-12 d-flex flex-wrap align-items-center gap-3">
-									<button className="btn btn-primary-600" type="submit">Valider</button>
-									<button className="btn btn-danger-600" type="submit">Annuler</button>
-								</div>
-
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-				
-				</div>
-				<div className="col-lg-12">
-					<div className="card">
-						<div className="card-header">
-							<h5 className="card-title mb-0 text-center">Création des fonctions</h5>
-						</div>
-						<div className="card-body">
-							<DataTable
-								className="table bordered-table mb-0"
-								title="Fonctions"
-								columns={columns}
-								 data={data}
-								 pagination
-								// selectableRows
-								// Clicked
-								// onSelectedRowsChange={handleChange}
-								// selectableRowsComponent={Checkbox}
-								// selectableRowsComponentProps={{ inkDisabled: true }}
-								// selectableRowsHighlight
-								// selectableRowsNoSelectAll
-								// selectableRowsVisibleOnly
-								// selectableRowsComponent={Checkbox}
-								// selectableRowsComponentProps={{ inkDisabled: true }}
-							></DataTable>
-						</div>
-					</div>
-				</div>
-				
-
-				
+			<div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+				<h6 className="fw-semibold mb-0">Form Validation</h6>
+				<ul className="d-flex align-items-center gap-2">
+					<li className="fw-medium">
+						<a href="index.html" className="d-flex align-items-center gap-1 hover-text-primary">
+							<iconify-icon icon="solar:home-smile-angle-outline" className="icon text-lg" />
+							Dashboard
+						</a>
+					</li>
+					<li>-</li>
+					<li className="fw-medium">Form Validation</li>
+				</ul>
 			</div>
 
-			
-			
-		
+			<div className="col-lg-12">
+				<div className="card">
+					<div className="card-header">
+						<h5 className="card-title mb-0">Création des fonctions</h5>
+					</div>
+					<div className="card-body">
+						<form className="row gy-3 needs-validation" noValidate>
+							<div className="col-md-6">
+								<label className="form-label">Code</label>
+								<input type="text" name="#0" className="form-control" defaultValue="info@gmail.com" required onChange={e => setNewData({ ...newData, code: e.target.value })} />
+								<div className="valid-feedback">
+									Looks good!
+								</div>
+							</div>
+							<div className="col-md-6">
+								<label className="form-label">Libelle</label>
+								<input type="text" name="#0" className="form-control" defaultValue="info@gmail.com" required onChange={e => setNewData({ ...newData, libelle: e.target.value })} />
+								<div className="valid-feedback">
+									Looks good!
+								</div>
+							</div>
 
-		
-		
+							<div className="col-12 d-flex flex-wrap align-items-center gap-3">
+								<button className="btn btn-primary-600" type="submit">Valider</button>
+								<button className="btn btn-danger-600" type="submit">Annuler</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
+
+			</div>
+			<div className="col-lg-12">
+				<div className="card">
+					<div className="card-header">
+						<h5 className="card-title mb-0 text-center">Création des fonctions</h5>
+					</div>
+					<div className="card-body">
+						<DataTable
+							className="table bordered-table mb-0"
+							title="Fonctions"
+							columns={columns}
+							data={data}
+							pagination
+						// selectableRows
+						// Clicked
+						// onSelectedRowsChange={handleChange}
+						// selectableRowsComponent={Checkbox}
+						// selectableRowsComponentProps={{ inkDisabled: true }}
+						// selectableRowsHighlight
+						// selectableRowsNoSelectAll
+						// selectableRowsVisibleOnly
+						// selectableRowsComponent={Checkbox}
+						// selectableRowsComponentProps={{ inkDisabled: true }}
+						></DataTable>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+
+
+
+
+
+
+
 	)
 }
 
