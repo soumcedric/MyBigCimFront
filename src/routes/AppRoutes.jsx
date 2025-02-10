@@ -6,6 +6,7 @@ import MainLayout from '../layouts/MainLayout';
 import Services from '../components/configuration/Services';
 import Fonction from '../components/configuration/Fonction';
 import ListeEmploye from '../components/employe/ListeEmploye';
+import CreerEmploye from '../components/employe/CreerEmploye';
 const isAuthenticated = true;
 
 var AppRoutes = () => {
@@ -44,6 +45,13 @@ var AppRoutes = () => {
                         element={
                             <MainLayout>
                                 <ListeEmploye />
+                            </MainLayout>
+                        }
+                    />
+                    <Route path="/creerEmploye"
+                        element={
+                            <MainLayout>
+                                <CreerEmploye />
                             </MainLayout>
                         }
                     />

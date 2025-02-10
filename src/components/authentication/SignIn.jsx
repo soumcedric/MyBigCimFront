@@ -20,7 +20,7 @@ var SignIn = () => {
                 <section className="auth bg-base d-flex flex-wrap">
                     <div className="auth-left d-lg-block d-none">
                         <div className="d-flex align-items-center flex-column h-100 justify-content-center">
-                            <img src="./src/assets/new/images/auth/auth-img.png"  />
+                            <img src="./src/assets/new/images/auth/signin_page_image_colored.jpg"  />
                            
                         </div>
                     </div>
@@ -28,7 +28,7 @@ var SignIn = () => {
                         <div className="max-w-464-px mx-auto w-100">
                             <div>
                                 <a href="index.html" className="mb-40 max-w-290-px">
-                                    <img src="./src/assets/new/images/logo.png" alt />
+                                    {/* <img src="./src/assets/new/images/logo.png" alt /> */}
                                 </a>
                                 <h4 className="mb-12">Se connecter</h4>
                                 <p className="mb-32 text-secondary-light text-lg">Bienvenu(e)! Veuillez saisir vos informations</p>

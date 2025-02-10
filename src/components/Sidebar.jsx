@@ -95,7 +95,7 @@ var Sidebar = () => {
       </li>
       <li className="sidebar-menu-group-title">Employés</li>
       <li>
-        <a href="/CreerEmploye">  
+        <a href="/creerEmploye">  
           <Icon icon="mage:email" className="menu-icon" />
           <span>Créer employé</span>
         </a>
